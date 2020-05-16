@@ -13,7 +13,7 @@ def read_input(name_of_file):
 
 def write_output(name_of_file, output):
     if name_of_file is None:
-        print(output)
+        print(output, end="")
         return
     output_file = open(name_of_file, "w")
     output_file.write(output)
@@ -25,6 +25,11 @@ def encode_symbol(symbol, key):
         return chr(ord("a") + (ord(symbol) - ord("a") + key) % 26)
     if ord("A") <= ord(symbol) and ord(symbol) <= ord("Z"):
         return chr(ord("A") + (ord(symbol) - ord("A") + key) % 26)
+    #print(symbol, (ord(symbol) - ord("а") + key) % 33, (ord(symbol) - ord("А") + key) % 33)
+    if ord("а") <= ord(symbol) and ord(symbol) <= ord("я"):
+        return chr(ord("а") + (ord(symbol) - ord("а") + key) % 33)
+    if ord("А") <= ord(symbol) and ord(symbol) <= ord("Я"):
+        return chr(ord("А") + (ord(symbol) - ord("А") + key) % 33)
     return symbol
 
 
@@ -43,6 +48,10 @@ def vigenere(text, key):
     return result
 
 
+def vernam(text, key):
+    return vigenere(text, key)
+
+
 def do_target():
     if (required_input_text.count(args.target)):
         text = read_input(args.input_file)
@@ -52,6 +61,8 @@ def do_target():
             result = caesar(text, int(args.key))
         if args.cipher == "vigenere":
             result = vigenere(text, args.key)
+        if args.cipher == "vernam":
+            result = vernam(text, args.key)
 
     if args.target == "decode":
         if args.cipher == "caesar":
@@ -61,6 +72,11 @@ def do_target():
             for i in args.key:
                 real_key += chr(ord("z") + 1 - (ord(i) - ord("a")))
             result = vigenere(text, real_key)
+        if args.cipher == "vernam":
+            real_key = ""
+            for i in args.key:
+                real_key += chr(ord("z") + 1 - (ord(i) - ord("a")))
+            result = vernam(text, real_key)
 
     if args.target == "get_frequencies":
         text.lower()
@@ -135,4 +151,3 @@ required_output_text = ["encode",
                         "hack"]
 
 do_target()
-
