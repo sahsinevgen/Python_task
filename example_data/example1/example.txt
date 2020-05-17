@@ -1,0 +1,15 @@
+You have text in text.txt you can encode it:
+python3 ../../main.py encode --input_file text.txt --cipher caesar --key 3
+
+You can also write output in a file: 
+python3 ../../main.py encode --input_file text.txt --output_file output.txt --cipher caesar --key 3
+
+Now you can decode your text:
+python3 ../../main.py decode --input_file output.txt --cipher caesar --key 3
+
+If you want, you can write text in standart input (press ctrl + d to finish printing):
+python3 ../../main.py decode --cipher caesar --key 3
+
+
+You can also used vigener's or vernam's cipher:
+python3 ../../main.py decode --vigener caesar --key qwertyuiop

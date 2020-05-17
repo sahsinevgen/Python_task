@@ -1,0 +1,5 @@
+You have encoded with caesar's cipher text in text.txt, but you don't know a key. 
+We have english text (part from Alice's Adventures in Wonderland) so we can collect frequency of using letters and hack our text
+
+python3 ../../main.py get_frequencies --input_file english_text.txt --output_file temp
+python3 ../../main.py hack --input_file text.txt --cipher caesar --frequencies_file temp
