@@ -17,6 +17,20 @@
   3) Cipher name: caesar, vigener or vernam.
   4) Key. It's number (1-26) if you choose caesar's cipher, string if you choose vigener's cipher and string no less then text in the input file.
   5) Name of file with frequencies. It will be used only if your target is hack, you may not 
+  
+  Examples:
+  ```
+  python3 main.py encode --input_file input.txt --output_file output.txt --cipher vigener --key door
+  ```
+  ```
+  python3 main.py decode --input_file inpit.txt --cipher caesar --key 3
+  ```
+  ```
+  python3 main.py get_frequencies  --output_file temp.txt
+  ```
+  ```
+  python3 main.py hack --cipher caesar --key qwertyuiop --frequency_file temp.txt
+  ```
 
   TODO
   ----

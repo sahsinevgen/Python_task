@@ -25,11 +25,10 @@ def encode_symbol(symbol, key):
         return chr(ord("a") + (ord(symbol) - ord("a") + key) % 26)
     if ord("A") <= ord(symbol) and ord(symbol) <= ord("Z"):
         return chr(ord("A") + (ord(symbol) - ord("A") + key) % 26)
-    #print(symbol, (ord(symbol) - ord("а") + key) % 33, (ord(symbol) - ord("А") + key) % 33)
     if ord("а") <= ord(symbol) and ord(symbol) <= ord("я"):
-        return chr(ord("а") + (ord(symbol) - ord("а") + key) % 33)
+        return chr(ord("а") + (ord(symbol) - ord("а") + key) % 32)
     if ord("А") <= ord(symbol) and ord(symbol) <= ord("Я"):
-        return chr(ord("А") + (ord(symbol) - ord("А") + key) % 33)
+        return chr(ord("А") + (ord(symbol) - ord("А") + key) % 32)
     return symbol
 
 
